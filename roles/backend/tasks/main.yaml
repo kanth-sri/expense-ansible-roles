@@ -6,28 +6,36 @@
 
 - name: installing nodejs:20
   ansible.builtin.package:
-    name: nodejs
+    name: {{item}}
     state: present
+    loop:
+    - nodejs
+    - mysql
 
 - name: creating expense user
   ansible.builtin.user:
     name: expense
 
-- name: creating app directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
+- name: import from common role
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: prereq
 
-- name: Download application code 
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend.zip
+# - name: creating app directory
+#   ansible.builtin.file:
+#     path: /app
+#     state: directory
 
-- name: Extract the code into app directory
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
+# - name: Download application code 
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#     dest: /tmp/backend.zip
+
+# - name: Extract the code into app directory
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip
+#     dest: /app
+#     remote_src: yes
 
 - name: Install dependencies using npm
   ansible.builtin.command: npm install

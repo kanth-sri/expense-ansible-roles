@@ -1,0 +1,5 @@
+- name: configure web server
+  hosts: web
+  become: yes
+  roles:
+  - myweb
