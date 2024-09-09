@@ -6,7 +6,7 @@
 
 - name: installing nodejs:20
   ansible.builtin.package:
-    name: {{item}}
+    name: "{{item}}"
     state: present
     loop:
     - nodejs
