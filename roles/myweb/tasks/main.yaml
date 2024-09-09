@@ -8,7 +8,7 @@
     name: nginx
     state: started
     enabled: yes
-    
+
 - name: import from common role
   ansible.builtin.import_role:
     name: common
@@ -36,7 +36,7 @@
 #     remote_src: yes
 
 - name: copy expense conf
-  ansible.builtin.templete:
+  ansible.builtin.template:
     src: expense.conf.j2
     dest: /etc/nginx/default.d/expense.conf
   notify:
