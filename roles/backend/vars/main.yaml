@@ -1,4 +1,4 @@
-my_sql_pass: ExpenseApp@1
-my_sql_host: 54.87.170.101
+#my_sql_pass: ExpenseApp@1
+my_sql_host: 172.31.24.49
 component: backend
 app_location: /app
