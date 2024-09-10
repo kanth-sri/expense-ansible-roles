@@ -1,7 +1,7 @@
 - name: Configure mysql
   hosts: DB
   become: yes
-  vars_file:
+  vars_files:
   - /home/ec2-user/expense/mysql_cred.yaml
   roles:
   - mysql
