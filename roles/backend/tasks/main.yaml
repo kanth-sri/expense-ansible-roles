@@ -17,11 +17,15 @@
     name: expense
 
 - name: import from common role
+  tags:
+  - expense
   ansible.builtin.import_role:
     name: common
     tasks_from: prereq
 
 - name: Install dependencies using npm
+  tags:
+  - expense
   ansible.builtin.command: npm install
   args:
     chdir: /app

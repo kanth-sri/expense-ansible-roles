@@ -10,6 +10,8 @@
     enabled: yes
 
 - name: import from common role
+  tags:
+  - expense
   ansible.builtin.import_role:
     name: common
     tasks_from: prereq
