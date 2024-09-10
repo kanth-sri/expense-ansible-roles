@@ -3,6 +3,7 @@
   become: yes
   vars_files:
   - /home/ec2-user/expense/mysql_cred.yaml
+  serial: 3
   tasks:
   - name: install nginx server
     ansible.builtin.package:
